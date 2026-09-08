@@ -1,0 +1,8 @@
+{
+  "name": "rethink-mind",
+  "version": "4.0.0",
+  "private": true,
+  "scripts": {
+    "check": "node --check js/exercises.js && node --check js/app.js && node --check sw.js"
+  }
+}

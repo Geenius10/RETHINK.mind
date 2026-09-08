@@ -3,81 +3,158 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-  <meta name="theme-color" content="#0a0f14">
+  <meta name="theme-color" content="#09090d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-title" content="MIND">
+  <title>RETHINK. MIND</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icon-192.svg">
   <link rel="stylesheet" href="styles.css">
-  <title>MentalEdge</title>
 </head>
 <body>
 <div id="app">
-  <header class="topbar">
-    <button class="brand" data-action="home">
-      <span class="brandmark">ME</span>
-      <span><strong>MentalEdge</strong><small>MENTAL PERFORMANCE</small></span>
-    </button>
-    <button class="ghost-icon" data-action="open-evidence" aria-label="Wissenschaft">i</button>
-  </header>
-
-  <main>
-    <section class="view active" id="todayView">
-      <div id="todayContent"></div>
-    </section>
-
-    <section class="view" id="practiceView">
-      <div class="page-head">
-        <span class="eyebrow">MENTAL GYM</span>
-        <h1>Üben</h1>
-        <p>Kurze, wiederholbare Einheiten. Keine Theorie-Sammlung – du trainierst den Skill.</p>
+  <section id="home" class="screen active">
+    <header class="topbar">
+      <div class="brand">RETHINK<span>.</span> MIND</div>
+      <button class="iconbtn" data-go="progress" aria-label="Fortschritt">↗</button>
+    </header>
+    <main class="home-main">
+      <div class="eyebrow">MENTAL PERFORMANCE</div>
+      <h1>READY?</h1>
+      <div class="focus-card">
+        <div class="label">HEUTIGER FOKUS</div>
+        <strong id="focusLabel">FOCUS + PRESSURE</strong>
+        <span id="sessionMeta">7–10 MIN · ADAPTIVE SESSION</span>
       </div>
-      <div id="practiceSummary"></div>
-      <div id="skillGrid" class="skill-grid"></div>
-    </section>
-
-    <section class="view" id="reflectView">
-      <div class="page-head">
-        <span class="eyebrow">REVIEW → LEARN</span>
-        <h1>Auswertung</h1>
-        <p>Nur nach Training oder Wettkampf: kurz prüfen, was vom aktuellen Ziel wirklich im Sport angekommen ist.</p>
+      <button class="primary xl" id="startDaily">START DAILY</button>
+      <div class="split">
+        <button class="secondary" data-quick="performance">PERFORMANCE</button>
+        <button class="secondary" data-quick="reset">RESET</button>
       </div>
-      
-      <div id="insightPanel"></div>
-      <div class="section-row"><h2>Verlauf</h2><button class="text-btn" data-action="show-journal">Journal →</button></div>
-      <div id="trendPanel"></div>
-    </section>
+    </main>
+    <footer class="home-footer">
+      <button class="textbtn" data-go="library">LIBRARY</button>
+      <span>•</span>
+      <button class="textbtn" data-go="settings">SETTINGS</button>
+    </footer>
+  </section>
 
-    <section class="view" id="profileView">
-      <div class="page-head">
-        <span class="eyebrow">DEIN SETUP</span>
-        <h1>Profil</h1>
-        <p>MentalEdge passt Ziele, Szenarien und Übungen an deinen Sport an.</p>
+  <section id="onboarding" class="screen">
+    <header class="topbar"><div class="brand">SETUP<span>.</span></div></header>
+    <main class="scroll-body compact">
+      <div class="eyebrow">EINMALIG · 60 SEKUNDEN</div>
+      <h2>Mach das Training zu deinem.</h2>
+      <p class="muted">Die App funktioniert ohne Konto und speichert alles nur auf deinem Gerät.</p>
+      <div class="section-card">
+        <div class="label">DEIN HAUPTKONTEXT</div>
+        <div class="choice-grid" id="sportChoices"></div>
       </div>
-      <div id="profileContent"></div>
-    </section>
-  </main>
-
-  <nav class="tabbar" id="tabbar">
-    <button class="tab active" data-nav="today"><span>⌂</span><small>Heute</small></button>
-    <button class="tab" data-nav="practice"><span>◉</span><small>Üben</small></button>
-    <button class="tab" data-nav="reflect"><span>↺</span><small>Auswertung</small></button>
-    <button class="tab" data-nav="profile"><span>◎</span><small>Profil</small></button>
-  </nav>
-
-  <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true">
-    <div class="modal">
-      <div class="modal-top">
-        <button class="ghost-icon" data-action="close-modal">×</button>
-        <div id="modalProgress" class="modal-progress"></div>
-        <span></span>
+      <div class="section-card">
+        <div class="label">HAUPTZIEL</div>
+        <div class="choice-grid two" id="goalChoices"></div>
       </div>
-      <div id="modalBody"></div>
-    </div>
-  </div>
+      <div class="section-card">
+        <div class="label">STANDARDLÄNGE</div>
+        <div class="segmented" id="durationChoices"></div>
+      </div>
+    </main>
+    <footer class="sticky-footer"><button class="primary" id="finishSetup">APP STARTEN</button></footer>
+  </section>
 
-  <div class="toast hidden" id="toast"></div>
+  <section id="check" class="screen">
+    <header class="topbar"><div class="brand">CHECK<span>.</span></div><button class="iconbtn" data-go="home">×</button></header>
+    <main class="scroll-body compact">
+      <div class="eyebrow">READINESS · 30 SEKUNDEN</div>
+      <h2>Wie bist du gerade da?</h2>
+      <p class="muted">Nicht bewerten. Kurz einschätzen.</p>
+      <div id="checkItems"></div>
+    </main>
+    <footer class="sticky-footer"><button class="primary" id="buildSession">SESSION ERSTELLEN</button></footer>
+  </section>
+
+  <section id="train" class="screen">
+    <header class="topbar"><div class="brand">TRAIN<span>.</span></div><button class="iconbtn" id="quitSession">×</button></header>
+    <div class="top-progress"><div id="sessionProgress"></div></div>
+    <main id="exerciseStage" class="exercise-stage"></main>
+    <footer class="sticky-footer"><button class="primary hidden" id="nextExercise">WEITER</button></footer>
+  </section>
+
+  <section id="reflect" class="screen">
+    <header class="topbar"><div class="brand">REFLECT<span>.</span></div></header>
+    <main class="scroll-body compact">
+      <div class="eyebrow">SESSION COMPLETE</div>
+      <h2>Was ist hängen geblieben?</h2>
+      <div class="slider-card"><div><span>Fokus nach Fehlern</span><b id="reflectFocusVal">3</b></div><input id="reflectFocus" type="range" min="1" max="5" value="3"></div>
+      <div class="slider-card"><div><span>Innere Kontrolle</span><b id="reflectControlVal">3</b></div><input id="reflectControl" type="range" min="1" max="5" value="3"></div>
+      <div class="slider-card"><div><span>Realitätsnähe</span><b id="reflectRealVal">3</b></div><input id="reflectReal" type="range" min="1" max="5" value="3"></div>
+      <div class="transfer-card">
+        <div class="label">TRANSFER TASK</div>
+        <strong id="transferTask">Nach einem Fehler: Ausatmen → NEXT → nächste Aktion.</strong>
+      </div>
+    </main>
+    <footer class="sticky-footer"><button class="primary" id="finishSession">ABSCHLIESSEN</button></footer>
+  </section>
+
+  <section id="progress" class="screen">
+    <header class="topbar"><div class="brand">PROGRESS<span>.</span></div><button class="iconbtn" data-go="home">×</button></header>
+    <main class="scroll-body">
+      <div class="eyebrow">TRAINING INDEX · KEINE DIAGNOSE</div>
+      <h2>MENTAL PROFILE</h2>
+      <div id="skillBars"></div>
+      <div class="stats-grid" id="summaryStats"></div>
+      <div class="section-card">
+        <div class="label">LETZTE 14 TAGE</div>
+        <div class="calendar-row" id="calendarRow"></div>
+      </div>
+      <div class="section-card">
+        <div class="label">AKTUELLER TRAININGSBLOCK</div>
+        <strong id="blockTitle"></strong>
+        <p class="muted" id="blockText"></p>
+      </div>
+      <div class="section-card">
+        <div class="label">LETZTE SESSION</div>
+        <div id="lastSession"></div>
+      </div>
+    </main>
+  </section>
+
+  <section id="library" class="screen">
+    <header class="topbar"><div class="brand">LIBRARY<span>.</span></div><button class="iconbtn" data-go="home">×</button></header>
+    <main class="scroll-body">
+      <div class="eyebrow">ALLE SKILLS · FREIES TRAINING</div>
+      <h2>Drills</h2>
+      <div class="skill-tabs" id="skillTabs"></div>
+      <div id="libraryList"></div>
+    </main>
+  </section>
+
+  <section id="settings" class="screen">
+    <header class="topbar"><div class="brand">SETTINGS<span>.</span></div><button class="iconbtn" data-go="home">×</button></header>
+    <main class="scroll-body">
+      <div class="section-card">
+        <div class="label">KONTEXT</div>
+        <select id="settingSport"></select>
+      </div>
+      <div class="section-card">
+        <div class="label">ZIEL</div>
+        <select id="settingGoal"></select>
+      </div>
+      <div class="section-card">
+        <div class="label">DAILY LÄNGE</div>
+        <select id="settingDuration"><option value="short">6–7 Minuten</option><option value="normal">8–10 Minuten</option><option value="long">11–13 Minuten</option></select>
+      </div>
+      <div class="section-card">
+        <div class="label">DATEN</div>
+        <div class="stack"><button class="secondary" id="exportData">DATEN EXPORTIEREN</button><button class="secondary" id="importData">DATEN IMPORTIEREN</button><input id="importFile" type="file" accept="application/json" hidden><button class="danger" id="resetData">APP ZURÜCKSETZEN</button></div>
+      </div>
+      <div class="section-card small-copy"><strong>Was der Score bedeutet</strong><p class="muted">Der Mental Performance Index kombiniert Übungsleistung und kurze Selbsteinschätzungen. Er dient ausschließlich zur Trainingssteuerung und ist keine psychologische oder medizinische Diagnose.</p></div>
+    </main>
+  </section>
 </div>
-<script src="app.js"></script>
+<div id="feedbackFlash" class="feedback-flash"></div>
+<script src="js/exercises.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
