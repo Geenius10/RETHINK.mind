@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#0a0f14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>MentalEdge</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="brand" data-action="home">
+      <span class="brandmark">ME</span>
+      <span><strong>MentalEdge</strong><small>MENTAL PERFORMANCE</small></span>
+    </button>
+    <button class="ghost-icon" data-action="open-evidence" aria-label="Wissenschaft">i</button>
+  </header>
+
+  <main>
+    <section class="view active" id="todayView">
+      <div id="todayContent"></div>
+    </section>
+
+    <section class="view" id="practiceView">
+      <div class="page-head">
+        <span class="eyebrow">MENTAL GYM</span>
+        <h1>Üben</h1>
+        <p>Kurze, wiederholbare Einheiten. Keine Theorie-Sammlung – du trainierst den Skill.</p>
+      </div>
+      <div id="practiceSummary"></div>
+      <div id="skillGrid" class="skill-grid"></div>
+    </section>
+
+    <section class="view" id="reflectView">
+      <div class="page-head">
+        <span class="eyebrow">REVIEW → LEARN</span>
+        <h1>Auswertung</h1>
+        <p>Nur nach Training oder Wettkampf: kurz prüfen, was vom aktuellen Ziel wirklich im Sport angekommen ist.</p>
+      </div>
+      
+      <div id="insightPanel"></div>
+      <div class="section-row"><h2>Verlauf</h2><button class="text-btn" data-action="show-journal">Journal →</button></div>
+      <div id="trendPanel"></div>
+    </section>
+
+    <section class="view" id="profileView">
+      <div class="page-head">
+        <span class="eyebrow">DEIN SETUP</span>
+        <h1>Profil</h1>
+        <p>MentalEdge passt Ziele, Szenarien und Übungen an deinen Sport an.</p>
+      </div>
+      <div id="profileContent"></div>
+    </section>
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tab active" data-nav="today"><span>⌂</span><small>Heute</small></button>
+    <button class="tab" data-nav="practice"><span>◉</span><small>Üben</small></button>
+    <button class="tab" data-nav="reflect"><span>↺</span><small>Auswertung</small></button>
+    <button class="tab" data-nav="profile"><span>◎</span><small>Profil</small></button>
+  </nav>
+
+  <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="ghost-icon" data-action="close-modal">×</button>
+        <div id="modalProgress" class="modal-progress"></div>
+        <span></span>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
