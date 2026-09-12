@@ -1,100 +1,143 @@
-window.MIND = window.MIND || {};
+window.MIND={
+skills:[["reg","Regulation","Aktivierung und Spannung gezielt beeinflussen."],["att","Aufmerksamkeit","Den Fokus bewusst ausrichten und verändern."],["img","Vorstellung","Mentale Bilder präzise und handlungsnah aufbauen."],["talk","Selbstinstruktion","Gedanken in hilfreiche Handlungsanweisungen überführen."],["mind","Achtsamkeit","Wahrnehmen, ohne jedem Gedanken folgen zu müssen."]],
+ex:[
+["scan","reg","Körperscan","scan","Nimm Spannung wahr. Löse nur, was du nicht benötigst."],
+["down","reg","4–6-Atmung","breath","Beruhige den Atem, ohne ihn zu erzwingen."],
+["activation","reg","Aktivierung","activation","Erhöhe Wachheit und Handlungsbereitschaft, ohne Hektik."],
+["focus","att","Eng · Weit","focus","Der Blick bleibt am Punkt. Nur die Aufmerksamkeit verändert sich."],
+["anchor","att","Aufmerksamkeitsanker","anchor","Bemerke Ablenkung und führe den Fokus bewusst zurück."],
+["scene","img","Szene aufbauen","imagery","Baue ein vollständiges mentales Bild auf. Du bestimmst das Tempo."],
+["coping","img","Störung bewältigen","coping","Übe auch eine gelungene Reaktion auf eine Störung."],
+["self","talk","Funktionale Sprache","selftalk","Wähle die Formulierung, die unmittelbar handlungsfähig macht."],
+["cue","talk","Präziser Cue","cue","Erkenne die kurze Instruktion, die zur Situation passt."],
+["observe","mind","Gedanken beobachten","observe","Nimm Gedanken wahr, ohne ihnen automatisch zu folgen."],
+["senses","mind","Sinneswechsel","senses","Lenke Aufmerksamkeit bewusst zwischen Wahrnehmungskanälen.",1],
+["shift","att","Innen · Außen","shift","Wechsle den Aufmerksamkeitsbezug bewusst, statt ihm zu folgen.",2],
+["relax","reg","Spannung · Lösung","relax","Erzeuge und löse Spannung bewusst. Nimm den Unterschied wahr.",2],
+["accept","mind","Unbehagen zulassen","accept","Lass einen inneren Zustand bestehen und bleibe trotzdem handlungsfähig.",3]],
+regions:["Stirn","Augen","Kiefer","Zunge","Nacken","Schultern","Oberarme","Unterarme","Hände","Brustkorb","Bauch","Gesäß","Oberschenkel","Waden","Füße"],
+self:[
+["Eine anspruchsvolle Aufgabe misslingt zweimal.",["Das darf nicht wieder passieren.","Ruhig. Den nächsten relevanten Schritt sauber ausführen.","Ich muss mich stärker konzentrieren."],1,"Die Formulierung richtet den Fokus auf eine kontrollierbare Handlung."],
+["Deine Gedanken sind bereits beim Ergebnis.",["Nicht an das Ergebnis denken.","Zur gegenwärtigen Aufgabe. Ein Schritt nach dem anderen.","Es wird schon funktionieren."],1,"Eine konkrete Rückführung hilft mehr als ein Verbot."],
+["Die Aufgabe ist schwieriger als erwartet.",["Heute bin ich nicht in Form.","Tempo ordnen. Den nächsten Schritt präzise ausführen.","Ich muss mich zusammenreißen."],1,"Die Instruktion beschreibt Verhalten statt Leistung zu bewerten."],
+["Nach einem guten Beginn steigt der eigene Erwartungsdruck.",["Jetzt bloß nicht nachlassen.","Gleicher Ablauf. Gleiche Aufmerksamkeit.","Heute läuft es perfekt."],1,"Der Prozess bleibt stabil, ohne zusätzlichen Ergebnisdruck."],
+["Du bemerkst deutliche innere Unruhe.",["Ich muss sofort ruhig werden.","Unruhe wahrnehmen. Atmung ordnen. Aufgabe beginnen.","Warum bin ich wieder nervös?"],1,"Der Zustand wird angenommen und mit einer steuerbaren Handlung verbunden."],
+["Du zweifelst kurz vor einer anspruchsvollen Aufgabe.",["Ich darf nicht zweifeln.","Zweifel ist da. Haltung ordnen. Ersten Schritt ausführen.","Ich muss mir mehr vertrauen."],1,"Die Formulierung trennt den inneren Zustand von der nächsten Handlung."],
+["Du ärgerst dich über eine ungenaue Ausführung.",["So etwas darf mir nicht passieren.","Information nehmen. Korrektur wählen. Neu ausführen.","Vergiss den Fehler einfach."],1,"Der Fehler wird als Information genutzt, ohne ihn weiter zu bewerten."],
+["Du fühlst dich müde und interpretierst das sofort negativ.",["Heute wird nichts gehen.","Müdigkeit wahrnehmen. Qualität des nächsten Schrittes prüfen.","Ich bin trotzdem topfit."],1,"Die Aussage bleibt realistisch und richtet sich auf beobachtbares Verhalten."],
+["Du willst mehrere Dinge gleichzeitig korrigieren.",["Alles gleichzeitig besser machen.","Eine Korrektur wählen. Diese sauber umsetzen.","Mehr nachdenken."],1,"Ein einzelner Cue reduziert unnötige kognitive Last."],
+["Eine andere Person wirkt sehr souverän.",["Ich muss genauso wirken.","Bei meiner Aufgabe bleiben. Nächste Handlung vorbereiten.","Die Person ist bestimmt besser."],1,"Die Aufmerksamkeit wird vom Vergleich auf den eigenen Prozess zurückgeführt."],
+["Du wartest auf eine wichtige Rückmeldung.",["Ich muss wissen, wie es ausgeht.","Ungewissheit stehen lassen. Aufmerksamkeit zur aktuellen Aufgabe.","Bestimmt wird alles gut."],1,"Die Formulierung verlangt keine Sicherheit, bevor du handlungsfähig bist."],
+["Du merkst, dass du dich innerlich stark bewertest.",["Ich bin heute schlecht.","Bewertung bemerken. Relevante Information auswählen. Weiterarbeiten.","Ich darf mich nicht bewerten."],1,"Die Bewertung wird bemerkt, ohne mit ihr zu kämpfen."],
+["Vor einer schwierigen Phase steigt deine Anspannung.",["Ich muss entspannter sein.","Spannung prüfen. Atmung ordnen. Aufgabe klar halten.","Bloß keine Nervosität."],1,"Nicht jede Spannung muss verschwinden; entscheidend ist die Steuerbarkeit."],
+["Du hast gerade etwas sehr gut gemacht.",["Jetzt muss alles so weitergehen.","Erfolg registrieren. Gleichen Ablauf erneut vorbereiten.","Heute kann nichts schiefgehen."],1,"Auch nach Erfolg bleibt der Fokus auf dem wiederholbaren Prozess."],
+["Du bemerkst einen aufdringlichen negativen Gedanken.",["Weg damit.","Gedanken bemerken. Nicht beantworten. Aufmerksamkeit zurückführen.","Ich brauche einen positiven Gedanken."],1,"Gedanken müssen nicht ersetzt werden, um die Aufmerksamkeit neu auszurichten."],
+["Du willst eine Aufgabe unbedingt perfekt lösen.",["Keinen Fehler machen.","Qualität anstreben. Nächsten Schritt vollständig ausführen.","Perfektion ist Pflicht."],1,"Der Cue hält den Qualitätsanspruch, ohne Fehlervermeidung zum Hauptziel zu machen."],
+["Du bist nach einer Unterbrechung gedanklich nicht mehr bei der Sache.",["Ich habe den Faden verloren.","Orientieren. Einen Anker wählen. Wieder einsteigen.","Sofort wieder voll konzentrieren."],1,"Ein konkreter Wiedereinstieg ist steuerbarer als die Forderung nach maximaler Konzentration."],
+["Eine Aufgabe dauert länger als erwartet.",["Das müsste längst fertig sein.","Tempo akzeptieren. Nächsten Abschnitt sauber bearbeiten.","Ich muss schneller werden."],1,"Die Formulierung verhindert, dass Zeitbewertung die aktuelle Handlung verdrängt."],
+["Du spürst Unsicherheit, obwohl du vorbereitet bist.",["Ich dürfte nicht unsicher sein.","Unsicherheit zulassen. Vorbereitung nutzen. Beginnen.","Ich bin hundertprozentig sicher."],1,"Handlungsfähigkeit verlangt keine vollständige innere Sicherheit."]],
+cues:[
+["Du wirst hektisch.",["SCHNELLER","RHYTHMUS","NICHT NERVÖS"],1,"„Rhythmus“ ist kurz und unmittelbar handlungsbezogen."],
+["Du verlierst dich in mehreren Gedanken.",["EINS","DENK NICHT","ALLES KONTROLLIEREN"],0,"„Eins“ reduziert auf den nächsten relevanten Schritt."],
+["Die Körperspannung wird unnötig hoch.",["LOCKER","KEIN FEHLER","MEHR DRUCK"],0,"Der Cue lenkt auf den veränderbaren körperlichen Zustand."],
+["Die Aufmerksamkeit wandert zum Ergebnis.",["JETZT","GEWINNEN","HOFFEN"],0,"„Jetzt“ führt die Aufmerksamkeit in die Gegenwart zurück."],
+["Du denkst zu viel über die Technik nach.",["EINFACH","ANALYSIEREN","PERFEKT"],0,"„Einfach“ kann die Aufmerksamkeit von übermäßiger Kontrolle zurück zur Ausführung führen."],
+["Du wirst passiv und zögerlich.",["ENTSCHLOSSEN","VORSICHT","ABWARTEN"],0,"„Entschlossen“ beschreibt die gewünschte Handlungsqualität."],
+["Du verlierst deine aufrechte Haltung.",["AUFRICHTEN","NICHT SACKEN","KÄMPFEN"],0,"Der Cue benennt direkt die gewünschte Veränderung."],
+["Dein Ablauf wird unruhig.",["RUHE","KEIN STRESS","MEHR"],0,"„Ruhe“ ist ein knapper Zustands-Cue ohne Negation."],
+["Du möchtest den nächsten Schritt zu früh erzwingen.",["GEDULD","SOFORT","DRUCK"],0,"„Geduld“ schützt den Ablauf vor unnötigem Vorwegnehmen."],
+["Du brauchst eine klare Ausrichtung.",["ZIEL","NICHT ABLENKEN","HOFFEN"],0,"„Ziel“ richtet Aufmerksamkeit knapp auf den relevanten Bezugspunkt."],
+["Du sollst eine Bewegung flüssig halten.",["FLUSS","KONTROLLIEREN","NICHT STOCKEN"],0,"„Fluss“ beschreibt die gewünschte Qualität statt einen Fehler zu verbieten."],
+["Nach einer Unterbrechung musst du neu beginnen.",["NEU","ÄRGERN","ZURÜCK"],0,"„Neu“ markiert einen klaren Neustart ohne Bewertung."],
+["Du willst zu viele Details gleichzeitig steuern.",["KLAR","ALLES","DENKEN"],0,"„Klar“ unterstützt die Reduktion auf den wesentlichen Handlungsfokus."],
+["Du brauchst einen aktiven ersten Schritt.",["START","WARTEN","NICHT ZÖGERN"],0,"„Start“ ist unmittelbar und positiv handlungsbezogen."],
+["Du merkst unnötige Härte in der Ausführung.",["LEICHT","NICHT HART","MEHR KRAFT"],0,"„Leicht“ lenkt auf die gewünschte Bewegungsqualität."],
+["Du verlierst den Takt.",["TAKT","SCHNELL","NICHT RAUSKOMMEN"],0,"„Takt“ stellt eine konkrete zeitliche Struktur wieder her."]],
+scenes:[
+["Bewegung","Stelle dir eine vertraute, technisch saubere Bewegung vor.","Erlebe den Ablauf aus deiner eigenen Perspektive."],
+["Leistung","Stelle dir den Beginn einer anspruchsvollen Leistungssituation vor.","Erlebe Haltung, Blick und erste Handlung konkret."],
+["Alltag","Stelle dir eine Aufgabe vor, bei der du leicht abschweifst.","Erlebe, wie du bei einem einzigen Schritt bleibst."],
+["Training","Stelle dir den Beginn einer konzentrierten Trainingseinheit vor.","Erlebe den Übergang zur ersten sauberen Handlung."],
+["Präzision","Stelle dir eine Aufgabe vor, bei der Genauigkeit wichtiger ist als Tempo.","Erlebe einen ruhigen, vollständigen Ablauf."],
+["Dynamik","Stelle dir eine kraftvolle, dynamische Handlung vor.","Erlebe Vorbereitung, Impuls und kontrollierten Abschluss."],
+["Lernen","Stelle dir eine noch nicht vollständig sichere Fertigkeit vor.","Erlebe eine bewusste, technisch geordnete Wiederholung."],
+["Konzentration","Stelle dir eine längere Phase ungeteilter Aufmerksamkeit vor.","Erlebe, wie du nach kurzer Ablenkung ruhig zurückkehrst."],
+["Entscheidung","Stelle dir eine Situation mit zwei sinnvollen Handlungsoptionen vor.","Erlebe Wahrnehmung, Entscheidung und entschlossene Ausführung."],
+["Routine","Stelle dir einen vertrauten vorbereitenden Ablauf vor.","Erlebe jeden Schritt in seiner richtigen Reihenfolge."],
+["Belastung","Stelle dir eine anspruchsvolle Aufgabe unter spürbarer Ermüdung vor.","Erlebe, wie die Ausführung trotz Belastung geordnet bleibt."],
+["Neustart","Stelle dir den Wiederbeginn nach einer Unterbrechung vor.","Erlebe Orientierung, Fokus und den ersten klaren Schritt."]],
+dis:["Ein unerwarteter Fehler unterbricht den Ablauf.","Ein störender Gedanke taucht vor der Handlung auf.","Du bemerkst plötzlich erhöhte Körperspannung.","Ein äußerer Reiz zieht die Aufmerksamkeit weg.","Der erste Versuch gelingt schlechter als erwartet.","Du wirst plötzlich hektischer als geplant.","Eine kurze Unterbrechung zerstört deinen Rhythmus.","Du bemerkst, dass du bereits an das Ergebnis denkst.","Ein unerwartetes Geräusch zieht den Fokus weg.","Die Bewegung fühlt sich zunächst ungewohnt an.","Du zweifelst für einen Moment an deiner Entscheidung.","Du willst die nächste Handlung zu früh erzwingen.","Du spürst Müdigkeit und bewertest sie negativ.","Ein guter Beginn erhöht plötzlich deinen Erwartungsdruck.","Du bemerkst, dass du mehrere Dinge gleichzeitig korrigieren willst."],
+attention:[
+["Spüre für einen Moment Atmung und Bodenkontakt.","Richte die Aufmerksamkeit anschließend auf ein neutrales Geräusch im Raum."],
+["Nimm die Spannung in Händen und Kiefer wahr.","Wechsle danach zu einer Form oder Kontur vor dir."],
+["Beobachte zwei Atemzüge, ohne sie zu verändern.","Richte den Fokus danach auf den gesamten Raum."],
+["Nimm einen klaren Körperkontaktpunkt wahr.","Wechsle anschließend zu einem einzelnen visuellen Detail."],
+["Bemerke deine momentane innere Aktivierung.","Richte die Aufmerksamkeit danach auf drei äußere Geräusche."]],
+imageDetails:[
+"Ergänze Haltung, Atmung, Muskelspannung und Bodenkontakt.",
+"Spüre Stand, Schwerpunkt, Hände und den Rhythmus deiner Atmung.",
+"Ergänze Temperatur, Körperspannung und die Position deiner Gelenke.",
+"Nimm in der Vorstellung Druck unter den Füßen, Haltung und Atemtempo wahr.",
+"Ergänze Bewegungsgefühl, Gleichgewicht und die Spannung, die du wirklich benötigst.",
+"Spüre die Ausgangsposition so konkret, als würdest du sie gerade einnehmen."
+],
+regulations:[
+"Atme einmal geordnet aus. Löse unnötige Spannung und richte die Aufmerksamkeit neu aus.",
+"Bemerke die Reaktion. Wähle einen klaren Aufmerksamkeitsanker und setze den Ablauf fort.",
+"Lass die Störung bestehen. Ordne Haltung und Atmung und kehre zur nächsten Handlung zurück.",
+"Reduziere die Aufgabe auf einen steuerbaren Schritt. Führe genau diesen in der Vorstellung aus.",
+"Nimm den Zustand wahr, ohne ihn zu bewerten. Stelle dann die nächste konkrete Handlung her."
+],
+precision:[
+"Ergänze Tempo, Geräusche und Bewegungsgefühl.",
+"Wiederhole den entscheidenden Abschnitt in realistischem Tempo.",
+"Prüfe, ob Perspektive, Körpergefühl und Umgebung gleichzeitig vorhanden sind.",
+"Stelle den Übergang zwischen Vorbereitung und Handlung besonders deutlich her.",
+"Lass die Szene einmal ohne Kommentar vollständig ablaufen.",
+"Ergänze genau das Detail, das die Handlung für dich realistisch macht."
+],
+acceptance:[
+["Nimm leichte innere Unruhe wahr, ohne sie sofort verändern zu wollen.","Beschreibe sie innerlich knapp als Empfindung, nicht als Problem.","Richte die Aufmerksamkeit auf einen klaren nächsten Schritt."],
+["Bemerke einen Moment von Unsicherheit.","Lass offen, ob die Unsicherheit gleich verschwindet.","Wähle trotzdem eine konkrete Handlung und stelle sie dir vor."],
+["Nimm einen unangenehmen Gedanken wahr.","Lass ihn als Gedanken im Hintergrund bestehen.","Führe die Aufmerksamkeit zu Atmung, Körperkontakt und Aufgabe zurück."],
+["Bemerke erhöhte Spannung im Körper.","Unterscheide notwendige Aktivierung von unnötiger Verkrampfung.","Löse nur den unnötigen Anteil und bleibe bei der Aufgabe."],
+["Nimm Ungeduld wahr.","Lass den Wunsch nach sofortiger Veränderung kurz bestehen.","Arbeite den nächsten Abschnitt in deinem gewählten Tempo ab."]],
+followups:[
+["Welche Fortsetzung hält die Instruktion handlungsnah?","Zustand kontrollieren","Nächste Handlung benennen","Bleibe nicht beim inneren Zustand. Formuliere, was du jetzt konkret tun willst.","Gut. Verbinde die Instruktion mit genau einer unmittelbar folgenden Handlung."],
+["Worauf sollte der nächste Fokus liegen?","Ergebnis absichern","Steuerbaren Prozess wählen","Formuliere keine Ergebnisgarantie. Kehre zu einem beeinflussbaren Teil des Ablaufs zurück.","Gut. Wähle einen beobachtbaren, steuerbaren Prozessschritt."],
+["Wie wird der Cue wirksamer?","Mehr erklären","Kürzer und konkreter","Reduziere die Formulierung auf das, was die Handlung tatsächlich verändert.","Gut. Halte die Formulierung kurz genug, dass sie während einer Handlung verfügbar bleibt."],
+["Was folgt nach einem störenden Gedanken?","Gedanken widerlegen","Aufmerksamkeit zurückführen","Du musst den Gedanken nicht gewinnen. Entscheidend ist, wohin du die Aufmerksamkeit danach richtest.","Gut. Lass den Gedanken bestehen und führe die Aufmerksamkeit bewusst zurück."],
+["Wie bleibt die Formulierung realistisch?","Sicherheit behaupten","Handlung beschreiben","Vermeide Aussagen, die einen Zustand oder ein Ergebnis versprechen. Beschreibe Verhalten.","Gut. Die Formulierung verlangt keine Sicherheit, bevor du handeln kannst."],
+["Was hilft bei zu vielen Korrekturen?","Alles erinnern","Einen Schwerpunkt wählen","Mehr Inhalt erhöht hier die Last. Wähle nur die wichtigste Korrektur.","Gut. Ein einzelner Schwerpunkt macht die Instruktion verfügbar und überprüfbar."]],
+duration:{scan:75,breath:50,activation:55,focus:40,anchor:55,shift:55,imagery:95,coping:130,selftalk:80,cue:70,observe:60,senses:55,accept:65,relax:60}
 
-MIND.SKILLS = ['Focus','Control','Self-Talk','Imagery','Confidence','Resilience','Pressure'];
-MIND.SKILL_LABELS = {
-  Focus:'FOCUS', Control:'CONTROL', 'Self-Talk':'SELF-TALK', Imagery:'IMAGERY',
-  Confidence:'CONFIDENCE', Resilience:'RESILIENCE', Pressure:'PRESSURE'
-};
-MIND.SPORTS = [
-  {id:'general',label:'Allgemein'}, {id:'team',label:'Teamsport'}, {id:'strength',label:'Kraft / Gym'},
-  {id:'endurance',label:'Ausdauer'}, {id:'racket',label:'Rückschlag'}, {id:'combat',label:'Kampfsport'}
-];
-MIND.GOALS = [
-  {id:'pressure',label:'Unter Druck liefern'}, {id:'focus',label:'Konstanter Fokus'},
-  {id:'confidence',label:'Selbstvertrauen'}, {id:'reset',label:'Fehler schneller abhaken'}
-];
-
-MIND.CONTEXT = {
-  general:{scene:'entscheidenden Leistungssituation',action:'nächsten klaren Handlung',cue:'NEXT'},
-  team:{scene:'engen Phase eines Spiels',action:'nächsten sauberen Aktion mit Ball oder Gegner',cue:'NEXT PLAY'},
-  strength:{scene:'schweren Arbeitssatz',action:'sauberen Setup und die nächste Wiederholung',cue:'SET'},
-  endurance:{scene:'harten Abschnitt eines Rennens oder Intervalls',action:'Rhythmus, Technik und nächsten Abschnitt',cue:'RHYTHM'},
-  racket:{scene:'engen Spielstand',action:'nächsten Ball, Treffpunkt und Zielzone',cue:'NEXT BALL'},
-  combat:{scene:'intensiven Schlagabtausch',action:'Distanz, Atmung und nächste klare Aktion',cue:'RESET'}
-};
-
-MIND.DRILLS = [
-// FOCUS
-{id:'f1',skill:'Focus',title:'Target / Ignore',type:'gonogo',level:1,duration:45,summary:'Zielreize erkennen, irrelevante Reize ignorieren.',instruction:'Tippe nur bei ●. ○ und ▲ ignorieren. Ein Fehler ist sofort vorbei – der nächste Reiz zählt.'},
-{id:'f2',skill:'Focus',title:'Narrow / Wide',type:'focusshift',level:1,duration:44,summary:'Aufmerksamkeitsbreite bewusst steuern.',instruction:'Wechsle zwischen einem einzigen Punkt und dem gesamten Sichtfeld. Nicht anstrengen – bewusst umschalten.'},
-{id:'f3',skill:'Focus',title:'Moving Target',type:'moving',level:2,duration:45,summary:'Blick zuerst, Handlung danach.',instruction:'Tippe den Zielpunkt. Nach jedem Treffer wechselt seine Position. Erst Blick setzen, dann Hand bewegen.'},
-{id:'f4',skill:'Focus',title:'Odd / Even',type:'dualcue',level:2,duration:45,summary:'Regel halten und Position ignorieren.',instruction:'Gerade Zahl = LINKS. Ungerade Zahl = RECHTS. Die Position der Zahl ist bedeutungslos.'},
-{id:'f5',skill:'Focus',title:'Color Conflict',type:'stroop',level:3,duration:50,summary:'Dominante Reaktion hemmen.',instruction:'Reagiere auf die FARBE, nicht auf das geschriebene Wort.'},
-{id:'f6',skill:'Focus',title:'Peripheral Count',type:'peripheral',level:2,duration:45,summary:'Zentral fixieren und peripher wahrnehmen.',instruction:'Blick auf der Mitte halten. Zähle nur die kurzen Lichtimpulse am Rand.'},
-{id:'f7',skill:'Focus',title:'Quiet Eye',type:'quieteye',level:1,duration:40,summary:'Blick vor der Handlung stabilisieren.',instruction:'Fixiere den Punkt ruhig. Atme aus. Stelle dir vor, dass erst nach der stabilen Fixation die Handlung beginnt.'},
-{id:'f8',skill:'Focus',title:'Attention Switch',type:'switchrule',level:4,duration:52,summary:'Regelwechsel unter laufender Aufgabe.',instruction:'Halte die aktuelle Regel. Bei SWITCH wechselst du sofort, ohne die vorherige Entscheidung weiterzuverarbeiten.'},
-// CONTROL
-{id:'c1',skill:'Control',title:'4 → 6 Downshift',type:'breath',level:1,duration:55,summary:'Aktivierung kontrolliert senken.',instruction:'4 Sekunden ein, 6 Sekunden aus. Beim Ausatmen Kiefer, Schultern und Hände lösen.'},
-{id:'c2',skill:'Control',title:'Physiological Reset',type:'doubleinhale',level:1,duration:45,summary:'Kurzer Reset bei hoher Anspannung.',instruction:'Zwei kurze Einatmungen durch die Nase, danach eine lange Ausatmung. Dann normal weiteratmen.'},
-{id:'c3',skill:'Control',title:'Activation Ladder',type:'activate',level:1,duration:42,summary:'Energie vor Leistung erhöhen.',instruction:'Aufrichten, Blick anheben, aktiv einatmen. Mit jedem Zyklus etwas mehr Körperspannung und Wachheit.'},
-{id:'c4',skill:'Control',title:'Tension Scan',type:'bodyscan',level:1,duration:48,summary:'Unnötige Spannung erkennen und lösen.',instruction:'Scanne Stirn, Kiefer, Schultern, Hände und Bauch. Löse nur unnötige Spannung.'},
-{id:'c5',skill:'Control',title:'Box Control',type:'boxbreath',level:2,duration:48,summary:'Rhythmus und Atemkontrolle.',instruction:'4 ein – 4 halten – 4 aus – 4 halten. Ruhig und ohne Luftnot.'},
-{id:'c6',skill:'Control',title:'Fast → Calm',type:'fastcalm',level:3,duration:50,summary:'Von Aktivierung schnell in Kontrolle wechseln.',instruction:'Kurze Aktivierungsphase, dann sofort in langen Ausatem und ruhigen Blick wechseln.'},
-{id:'c7',skill:'Control',title:'Pre-Start State',type:'statechoice',level:2,duration:0,summary:'Passenden Aktivierungszustand wählen.',instruction:'Wähle für die Situation nicht „ruhig“ oder „heiß“, sondern den Zustand, der die nächste Aufgabe unterstützt.'},
-{id:'c8',skill:'Control',title:'Pressure Breathing',type:'breathpressure',level:4,duration:52,summary:'Atmung trotz Störung stabil halten.',instruction:'Halte deinen Atemrhythmus, obwohl visuelle Störungen auftauchen. Nicht gegen die Störung kämpfen.'},
-// SELF TALK
-{id:'s1',skill:'Self-Talk',title:'Functional Voice',type:'choice',level:1,duration:0,summary:'Bewertung durch Handlung ersetzen.',instruction:'Zwei schlechte Aktionen hintereinander. Welche innere Anweisung bringt dich am besten zurück?',options:['Das darf nicht nochmal passieren.','NEXT. Nächste Aktion.','Ich muss jetzt perfekt sein.','Atmen. Sehen. Handeln.'],good:[1,3]},
-{id:'s2',skill:'Self-Talk',title:'Instruction > Judgment',type:'choice',level:1,duration:0,summary:'Konkrete Instruktion statt Selbsturteil.',instruction:'Du merkst: „Heute läuft gar nichts.“ Welche Antwort ist funktional?',options:['Reiß dich zusammen.','Blick hoch. Nächste Aufgabe sauber.','Warum klappt das nicht?','Ich muss positiver denken.'],good:[1]},
-{id:'s3',skill:'Self-Talk',title:'Cue Builder',type:'textcue',level:2,duration:0,summary:'Kurzen persönlichen Cue entwickeln.',instruction:'Formuliere maximal drei Wörter: körperlich, konkret, kontrollierbar.'},
-{id:'s4',skill:'Self-Talk',title:'Outcome Trap',type:'choice',level:2,duration:0,summary:'Vom Ergebnis zur Handlung zurückkehren.',instruction:'Kurz vor einer entscheidenden Aktion. Welcher Satz hält dich bei der Aufgabe?',options:['Ich muss gewinnen.','Ruhig. Sehen. Entscheiden.','Bloß keinen Fehler.','Alle schauen gerade auf mich.'],good:[1]},
-{id:'s5',skill:'Self-Talk',title:'If → Then',type:'ifthen',level:2,duration:0,summary:'Reset im Voraus automatisieren.',instruction:'Vervollständige deinen Plan: „Wenn ich einen Fehler mache, dann …“'},
-{id:'s6',skill:'Self-Talk',title:'Technical Cue',type:'textcue',level:2,duration:0,summary:'Technik mit einem Cue vereinfachen.',instruction:'Wähle genau einen technischen Cue für deine nächste reale Leistung. Keine Checkliste.'},
-{id:'s7',skill:'Self-Talk',title:'Pressure Language',type:'choice',level:3,duration:0,summary:'Sprache unter Druck handlungsorientiert halten.',instruction:'Es wird eng und du merkst Anspannung. Welche Sprache hilft?',options:['Nicht nervös werden.','Atmen. Blick. Erste klare Aktion.','Ich darf jetzt nicht versagen.','Ich bin der Beste.'],good:[1]},
-{id:'s8',skill:'Self-Talk',title:'Reset Script',type:'textcue',level:4,duration:0,summary:'Persönliche Reset-Sequenz verdichten.',instruction:'Baue deinen Reset in maximal 5 Wörter: Atem + Cue + nächste Aktion.'},
-// IMAGERY
-{id:'i1',skill:'Imagery',title:'See · Feel · Solve',type:'imagery',level:1,duration:58,summary:'Realistische Leistungsszene simulieren.',instruction:'Umgebung → Körpergefühl → schwierige Aktion → kontrollierte Lösung.'},
-{id:'i2',skill:'Imagery',title:'First 3 Actions',type:'imagery3',level:1,duration:48,summary:'Nur den Start präzise vorbereiten.',instruction:'Visualisiere die ersten drei Aktionen deiner kommenden Leistung. Realistisch, nicht perfekt.'},
-{id:'i3',skill:'Imagery',title:'Error Recovery',type:'imageryerror',level:2,duration:54,summary:'Fehler plus gute Reaktion trainieren.',instruction:'Stell dir bewusst einen Fehler vor. Dann Ausatmen, Blick neu setzen und nächste Aktion sauber ausführen.'},
-{id:'i4',skill:'Imagery',title:'Pressure Scene',type:'imagerypressure',level:3,duration:58,summary:'Druck im Kopf erhöhen, Verhalten stabil halten.',instruction:'Lärm, Konsequenz und Zeitdruck steigen. Atmung, Cue und Entscheidung bleiben kontrolliert.'},
-{id:'i5',skill:'Imagery',title:'Slow Motion',type:'imageryslow',level:2,duration:50,summary:'Entscheidende Bewegung detailreich durchgehen.',instruction:'Spiele eine zentrale Aktion einmal in Zeitlupe und danach einmal in realem Tempo durch.'},
-{id:'i6',skill:'Imagery',title:'External View',type:'imageryexternal',level:2,duration:48,summary:'Außenperspektive gezielt einsetzen.',instruction:'Sieh dich kurz von außen: Haltung, Raum, Timing. Wechsel dann zurück in deine eigene Perspektive.'},
-{id:'i7',skill:'Imagery',title:'Sensory Layering',type:'imagerysense',level:3,duration:55,summary:'Bild um Geräusch und Körpergefühl ergänzen.',instruction:'Füge nacheinander Sehen, Hören und Körpergefühl hinzu. Die Handlung bleibt dieselbe.'},
-{id:'i8',skill:'Imagery',title:'Adversity Rehearsal',type:'imageryadversity',level:4,duration:62,summary:'Unperfekte Verläufe mental vorbereiten.',instruction:'Simuliere einen ungünstigen Verlauf und trainiere deine Antwort – nicht das perfekte Ergebnis.'},
-// CONFIDENCE
-{id:'cf1',skill:'Confidence',title:'Evidence, Not Hype',type:'evidence',level:1,duration:0,summary:'Selbstvertrauen auf reale Belege stützen.',instruction:'Nenne drei konkrete Belege aus Training oder Wettkampf, die Kompetenz zeigen.'},
-{id:'cf2',skill:'Confidence',title:'Best Rep Recall',type:'bestrep',level:1,duration:44,summary:'Beste reale Aktion abrufen.',instruction:'Rufe eine starke reale Aktion ab: Was hast du gesehen, gefühlt und getan?'},
-{id:'cf3',skill:'Confidence',title:'Control Inventory',type:'control',level:1,duration:0,summary:'Kontrollierbares vom Rest trennen.',instruction:'Schreibe drei Dinge auf, die du heute wirklich kontrollierst.'},
-{id:'cf4',skill:'Confidence',title:'Strength → Action',type:'strength',level:2,duration:0,summary:'Stärke in Verhalten übersetzen.',instruction:'Wähle eine Stärke und formuliere, wie man sie heute konkret sehen würde.'},
-{id:'cf5',skill:'Confidence',title:'Proof Stack',type:'proofstack',level:2,duration:0,summary:'Belege nach Relevanz ordnen.',instruction:'Ein aktueller Beleg, ein schwieriger Beleg, ein wiederholter Beleg. Keine allgemeinen Komplimente.'},
-{id:'cf6',skill:'Confidence',title:'Uncertainty Tolerance',type:'choice',level:3,duration:0,summary:'Sicherheit nicht mit Gewissheit verwechseln.',instruction:'Du weißt nicht, ob du heute deine Bestleistung abrufst. Welche Haltung ist tragfähig?',options:['Dann kann ich nicht selbstbewusst sein.','Ich brauche keine Garantie, nur eine klare nächste Aufgabe.','Ich sage mir einfach, dass ich sicher gewinne.','Ich vermeide Risiken.'],good:[1]},
-{id:'cf7',skill:'Confidence',title:'Preparation Check',type:'prepcheck',level:2,duration:0,summary:'Vertrauen aus Vorbereitung ableiten.',instruction:'Was hast du vorbereitet? Was ist noch offen? Was ist für heute gut genug vorbereitet?'},
-{id:'cf8',skill:'Confidence',title:'Identity Off',type:'choice',level:4,duration:0,summary:'Leistung nicht mit Selbstwert vermischen.',instruction:'Eine schlechte Leistung droht. Welche Aussage trennt Ergebnis und nächste Handlung?',options:['Dann bin ich einfach nicht gut genug.','Das Ergebnis bewertet die Leistung, nicht meinen Wert. Jetzt Aufgabe lösen.','Ich muss allen beweisen, wer ich bin.','Ich darf nicht schlecht aussehen.'],good:[1]},
-// RESILIENCE
-{id:'r1',skill:'Resilience',title:'Reset Under Error',type:'reset',level:1,duration:38,summary:'Schnelle Rückkehr nach Fehlern.',instruction:'Fehler → langer Ausatem → Cue → Blick auf nächsten relevanten Reiz.'},
-{id:'r2',skill:'Resilience',title:'3-Second Rule',type:'reset3',level:1,duration:42,summary:'Fehler kurz auswerten, dann schließen.',instruction:'Drei Sekunden Information. Danach: Was ist die nächste Aufgabe?'},
-{id:'r3',skill:'Resilience',title:'Adversity Reframe',type:'choice',level:2,duration:0,summary:'Handlungsfähigkeit unter ungünstigen Bedingungen.',instruction:'Schlechter Start, Frust steigt. Welche Interpretation hält dich handlungsfähig?',options:['Heute ist einfach nicht mein Tag.','Information. Was ist jetzt beeinflussbar?','Ich darf keinen weiteren Fehler machen.','Es muss sofort wieder laufen.'],good:[1]},
-{id:'r4',skill:'Resilience',title:'Disruption Drill',type:'disrupt',level:2,duration:46,summary:'Nach Unterbrechung wieder orientieren.',instruction:'Die Aufgabe wird mehrfach unterbrochen. Nicht gegen die Störung kämpfen – neu orientieren und weiter.'},
-{id:'r5',skill:'Resilience',title:'Bad Start Protocol',type:'protocol',level:2,duration:0,summary:'Plan für einen schlechten Start.',instruction:'Baue drei Schritte: Zustand regulieren → Information wählen → nächste Aktion.'},
-{id:'r6',skill:'Resilience',title:'Controllables Only',type:'choice',level:3,duration:0,summary:'Frust auf beeinflussbare Faktoren zurückführen.',instruction:'Entscheidung gegen dich, äußere Umstände nerven. Worauf gehst du zurück?',options:['Auf die Ungerechtigkeit.','Auf Atmung, Position und nächste Entscheidung.','Auf das Endergebnis.','Auf das Verhalten der anderen.'],good:[1]},
-{id:'r7',skill:'Resilience',title:'Bounce Back',type:'bounceback',level:3,duration:50,summary:'Fehlerreiz und direkte Folgeaktion koppeln.',instruction:'Nach jedem roten Fehlerreiz folgt sofort ein neuer Zielreiz. Die Reaktion danach zählt doppelt.'},
-{id:'r8',skill:'Resilience',title:'Chaos Reset',type:'chaos',level:4,duration:54,summary:'Reset unter wechselnden Störungen.',instruction:'Regelwechsel, Störreiz, Fehler. Dein Ablauf bleibt: ausatmen → orientieren → handeln.'},
-// PRESSURE
-{id:'p1',skill:'Pressure',title:'Go / No-Go Pressure',type:'pressurego',level:1,duration:48,summary:'Impulskontrolle bei steigendem Tempo.',instruction:'● = reagieren. ▲ = nicht reagieren. Tempo steigt. Fehler bekommen keine Denkpause.'},
-{id:'p2',skill:'Pressure',title:'Choice Under Clock',type:'clockchoice',level:2,duration:48,summary:'Regel unter Zeitdruck halten.',instruction:'Gerade = LINKS. Ungerade = RECHTS. Entscheide schnell, Regel bleibt stabil.'},
-{id:'p3',skill:'Pressure',title:'Late Switch',type:'lateswitch',level:3,duration:50,summary:'Regelwechsel spät erkennen.',instruction:'Blau = LINKS, Rot = RECHTS. Bei SWITCH dreht sich die Regel um.'},
-{id:'p4',skill:'Pressure',title:'Consequence Streak',type:'streak',level:2,duration:46,summary:'Konsequenz ohne Übervorsicht.',instruction:'Baue fünf richtige Entscheidungen in Folge. Fehler setzt nur die Serie zurück – nicht deinen Rhythmus.'},
-{id:'p5',skill:'Pressure',title:'Countdown Decision',type:'countdownchoice',level:2,duration:50,summary:'Entscheidung nahe einer Deadline.',instruction:'Entscheide nach Regel, bevor der Ring abläuft. Zu früh raten bringt nichts.'},
-{id:'p6',skill:'Pressure',title:'Noise + Task',type:'noise',level:3,duration:48,summary:'Relevantes trotz Störinformation halten.',instruction:'Ignoriere wechselnde Störwörter. Nur die eigentliche Entscheidungsregel zählt.'},
-{id:'p7',skill:'Pressure',title:'Clutch Five',type:'clutch',level:3,duration:0,summary:'Fünf bewusste Entscheidungen mit Score.',instruction:'Fünf Entscheidungen. Vor jeder: ein Ausatem. Dann entscheiden. Qualität vor Hektik.'},
-{id:'p8',skill:'Pressure',title:'Chaos Round',type:'chaos',level:4,duration:55,summary:'Mehrere Anforderungen unter Druck verbinden.',instruction:'Regel, Tempo und Störung ändern sich. Nicht alles kontrollieren – jeweils nur die aktuelle Regel.'}
-];
-
-MIND.TRANSFER_TASKS = {
-  Focus:'Wähle vor dem Training EINEN relevanten Fokus-Cue und kehre nach Ablenkung bewusst dorthin zurück.',
-  Control:'Nutze einmal vor Belastung und einmal nach hoher Aktivierung bewusst deinen Atem, um den Zustand zu steuern.',
-  'Self-Talk':'Ersetze heute mindestens einen bewertenden Gedanken durch eine konkrete nächste Handlungsanweisung.',
-  Imagery:'Spiele vor der realen Leistung die ersten drei Aktionen einmal kurz und realistisch mental durch.',
-  Confidence:'Rufe vor der Leistung einen konkreten Kompetenzbeleg ab und leite daraus eine klare Handlung ab.',
-  Resilience:'Nach einem deutlichen Fehler: Ausatmen → persönlicher Cue → nächste Aktion.',
-  Pressure:'Wenn es eng wird: keine Ergebnisrechnung. Ein Ausatem, ein Cue, eine Entscheidung.'
-};
+};window.MIND.self.push(
+["Mehrere kleine Fehler folgen schnell aufeinander.",["Heute geht alles schief.","Muster stoppen. Eine Information wählen. Nächsten Versuch ordnen.","Ich muss jetzt fehlerfrei sein."],1,"Die Instruktion reduziert die Situation auf einen verwertbaren nächsten Schritt.",2],
+["Du bemerkst, dass du eine Entscheidung immer wieder überprüfst.",["Noch einmal alles durchdenken.","Entscheidung steht. Aufmerksamkeit zur Ausführung.","Hoffentlich war es richtig."],1,"Nach einer ausreichenden Entscheidung wird weiteres Grübeln nicht mit zusätzlicher Kontrolle verwechselt.",2],
+["Eine Aufgabe fühlt sich plötzlich wichtiger an als sonst.",["Ich muss heute liefern.","Bedeutung wahrnehmen. Ablauf beibehalten. Ersten Schritt setzen.","Es ist eigentlich gar nicht wichtig."],1,"Die Bedeutung muss nicht kleingeredet werden; der Ablauf bleibt trotzdem steuerbar.",2],
+["Du spürst starke Aktivierung, bist aber noch handlungsfähig.",["Ich muss komplett ruhig werden.","Energie nutzen. Atmung ordnen. Handlung klar halten.","Mehr Spannung hilft immer."],1,"Aktivierung wird reguliert, nicht pauschal beseitigt.",2],
+["Nach Lob willst du die nächste Aufgabe besonders gut machen.",["Jetzt muss ich es beweisen.","Lob registrieren. Gleichen Prozess erneut ausführen.","Bloß nichts verändern."],1,"Der Fokus bleibt auf dem reproduzierbaren Ablauf statt auf der Bestätigung.",2],
+["Du hast wenig Zeit und wirst gedanklich eng.",["Schneller denken.","Priorität wählen. Einen Schritt vollständig abschließen.","Keine Zeit verlieren."],1,"Zeitdruck wird durch Priorisierung beantwortet, nicht durch zusätzliche innere Hektik.",3],
+["Ein unangenehmes Körpergefühl zieht immer wieder Aufmerksamkeit an.",["Das Gefühl muss weg.","Gefühl bemerken. Relevanz prüfen. Fokus bewusst zurückführen.","Ignorieren."],1,"Das Empfinden darf vorhanden sein, ohne automatisch die Aufgabe zu bestimmen.",3],
+["Du hast eine gute Vorbereitung, fühlst dich aber nicht bereit.",["Ich sollte mich bereit fühlen.","Vorbereitung ist erfolgt. Ersten Schritt beginnen.","Noch warten, bis es passt."],1,"Handlungsbereitschaft wird nicht von einem perfekten inneren Zustand abhängig gemacht.",3],
+["Du bemerkst nach einem Erfolg Übermut.",["Heute kann ich alles.","Erfolg registrieren. Anforderungen neu lesen. Gleichen Standard halten.","Ich muss mich bremsen."],1,"Die Instruktion stabilisiert Aufmerksamkeit, ohne Erfolg abzuwerten.",3],
+["Eine Aufgabe erzeugt gleichzeitig Vorfreude und Nervosität.",["Ich muss mich für einen Zustand entscheiden.","Beides darf da sein. Haltung ordnen. Aufgabe beginnen.","Nervosität ist schlecht."],1,"Gemischte Zustände müssen nicht aufgelöst werden, bevor Handlung möglich ist.",3],
+["Du weißt nicht, ob deine aktuelle Strategie funktionieren wird.",["Ich brauche Gewissheit.","Strategie sauber ausführen. Rückmeldung danach nutzen.","Einfach positiv denken."],1,"Unsicherheit wird durch einen überprüfbaren Prozess beantwortet.",4],
+["Du bemerkst, dass du dich an einer früheren schlechten Erfahrung orientierst.",["Das passiert bestimmt wieder.","Erinnerung bemerken. Aktuelle Informationen prüfen. Jetzt handeln.","Vergangenheit vergessen."],1,"Vergangenheit wird weder verleugnet noch zur Vorhersage gemacht.",4],
+["Du hast mehrere plausible Handlungsoptionen und keine ist sicher.",["Die perfekte Option finden.","Kriterien wählen. Entscheiden. Entscheidung ausführen.","Lieber nichts riskieren."],1,"Gute Entscheidungen benötigen nicht immer vollständige Sicherheit.",4],
+["Du willst während der Ausführung kontrollieren, ob du gut genug bist.",["Ständig prüfen.","Ausführen. Bewertung bis zum geeigneten Zeitpunkt verschieben.","Gar nicht mehr bewerten."],1,"Ausführung und Bewertung werden zeitlich getrennt, statt gleichzeitig um Aufmerksamkeit zu konkurrieren.",4]
+);
+window.MIND.cues.push(
+["Du grübelst nach einer bereits getroffenen Entscheidung.",["WEITER","NOCHMAL PRÜFEN","SICHER"],0,"„Weiter“ beendet die zusätzliche Entscheidungsschleife und führt zur Ausführung.",2],
+["Du brauchst nach einer Ablenkung einen klaren Wiedereinstieg.",["HIER","NICHT ABLENKEN","VOLLER FOKUS"],0,"„Hier“ markiert den aktuellen Bezugspunkt ohne Forderung nach einem perfekten Zustand.",2],
+["Du kontrollierst eine automatisierte Bewegung zu stark.",["LAUFEN LASSEN","MEHR DENKEN","PERFEKT"],0,"Der Cue reduziert bewusste Mikrokontrolle und lässt den vorbereiteten Ablauf zu.",2],
+["Du bist zu vorsichtig und verlierst Handlungsklarheit.",["KLAR","KEIN RISIKO","ABWARTEN"],0,"„Klar“ richtet auf eine eindeutige Handlung statt auf Vermeidung.",2],
+["Du brauchst nach einem Fehler sofort einen neuen Bezugspunkt.",["NÄCHSTE","WARUM","FEHLERFREI"],0,"„Nächste“ verschiebt Aufmerksamkeit von der Bewertung zur folgenden Handlung.",2],
+["Du wirst unter Zeitdruck oberflächlich.",["SAUBER","SCHNELLER","PANIK"],0,"„Sauber“ schützt die wesentliche Handlungsqualität trotz knapper Zeit.",3],
+["Du spürst hohe Aktivierung und willst sie sinnvoll nutzen.",["KANALISIEREN","WEG DAMIT","MEHR"],0,"„Kanalisieren“ behandelt Aktivierung als Energie, die auf die Aufgabe ausgerichtet wird.",3],
+["Du musst eine unangenehme Empfindung nicht lösen, um fortzufahren.",["TROTZDEM","WEG","IGNORIEREN"],0,"„Trotzdem“ verbindet Akzeptanz mit Handlung, ohne das Empfinden zu verleugnen.",3],
+["Du willst nach einem sehr guten Abschnitt den Standard halten.",["GLEICH","PERFEKT","ABSICHERN"],0,"„Gleich“ erinnert an den reproduzierbaren Ablauf statt an das Ergebnis.",3],
+["Du hast mehrere plausible Optionen und musst dich festlegen.",["WÄHLEN","SICHER SEIN","WARTEN"],0,"„Wählen“ richtet auf die notwendige Entscheidung statt auf unerreichbare Gewissheit.",4],
+["Du willst während der Handlung gleichzeitig bewerten.",["AUSFÜHREN","PRÜFEN","URTEILEN"],0,"„Ausführen“ trennt Handlung von späterer Bewertung.",4],
+["Eine alte schlechte Erfahrung drängt sich in die aktuelle Aufgabe.",["JETZT","DAMALS","VERMEIDEN"],0,"„Jetzt“ bindet die Aufmerksamkeit an aktuelle Informationen statt an eine frühere Episode.",4]
+);
